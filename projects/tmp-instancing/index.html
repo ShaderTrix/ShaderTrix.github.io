@@ -1,0 +1,636 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.12.3"><meta name="description" content="Unity UI Systems, Rendering, Shaders, GPU-driven Systems and Tool Development"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><!-- Loading Geist Sans for Headings and Geist Mono for code tags --><link href="[https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap](https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap)"><title>UI TextMeshPro Instancing System - ShaderTrix</title><link rel="stylesheet" href="/_astro/art.cP1pEIfd.css"></head> <body style="background-color:#0e0d0b"> <div class="fixed inset-0 -z-10"> <img src="/bg.png" alt="" class="w-full h-full object-cover"> </div> <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-[#0e0d0b]/80 backdrop-blur-md border-b border-white/5 transition-all duration-300" data-astro-cid-3ef6ksr2> <!-- Accent gradient hairline --> <div class="absolute bottom-0 left-0 right-0 h-px opacity-60" style="background: linear-gradient(90deg, transparent, #8ab870, transparent)" data-astro-cid-3ef6ksr2></div> <nav class="max-w-7xl mx-auto px-6 sm:px-8 py-4" data-astro-cid-3ef6ksr2> <div class="flex items-center justify-between gap-4" data-astro-cid-3ef6ksr2> <a href="/" class="group flex items-center gap-2.5 font-mono text-sm font-bold text-white whitespace-nowrap transition-opacity hover:opacity-80" data-astro-cid-3ef6ksr2> <span class="inline-block w-2 h-2 rounded-full animate-pulse" style="background-color: #8ab870; box-shadow: 0 0 8px #8ab870" data-astro-cid-3ef6ksr2></span> <span class="text-gray-500 transition-colors group-hover:text-white" data-astro-cid-3ef6ksr2>&gt;</span> ShaderTrix </a> <ul class="hidden md:flex items-center gap-6 lg:gap-8" data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/tech-art" class="relative py-1 transition-colors font-mono text-sm font-medium group text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // Techart <span class="absolute left-0 -bottom-0.5 h-[2px] rounded-full transition-all duration-300 w-0 group-hover:w-full" style="background-color: #8ab870" data-astro-cid-3ef6ksr2></span> </a> </li><li data-astro-cid-3ef6ksr2> <a href="/art" class="relative py-1 transition-colors font-mono text-sm font-medium group text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // Art <span class="absolute left-0 -bottom-0.5 h-[2px] rounded-full transition-all duration-300 w-0 group-hover:w-full" style="background-color: #8ab870" data-astro-cid-3ef6ksr2></span> </a> </li><li data-astro-cid-3ef6ksr2> <a href="/pro-games" class="relative py-1 transition-colors font-mono text-sm font-medium group text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> //Games <span class="absolute left-0 -bottom-0.5 h-[2px] rounded-full transition-all duration-300 w-0 group-hover:w-full" style="background-color: #8ab870" data-astro-cid-3ef6ksr2></span> </a> </li><li data-astro-cid-3ef6ksr2> <a href="/" class="relative py-1 transition-colors font-mono text-sm font-medium group text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // About Me <span class="absolute left-0 -bottom-0.5 h-[2px] rounded-full transition-all duration-300 w-0 group-hover:w-full" style="background-color: #8ab870" data-astro-cid-3ef6ksr2></span> </a> </li><li data-astro-cid-3ef6ksr2> <a href="/contact" class="relative py-1 transition-colors font-mono text-sm font-medium group text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // Contact <span class="absolute left-0 -bottom-0.5 h-[2px] rounded-full transition-all duration-300 w-0 group-hover:w-full" style="background-color: #8ab870" data-astro-cid-3ef6ksr2></span> </a> </li> </ul> <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white" aria-label="Toggle menu" data-astro-cid-3ef6ksr2> <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-3ef6ksr2> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" data-astro-cid-3ef6ksr2></path> </svg> </button> </div> <ul id="mobile-menu" class="hidden md:hidden flex-col gap-3 pt-4 pb-2" data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/tech-art" class="block transition-colors font-mono text-sm font-medium text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // Techart </a> </li><li data-astro-cid-3ef6ksr2> <a href="/art" class="block transition-colors font-mono text-sm font-medium text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // Art </a> </li><li data-astro-cid-3ef6ksr2> <a href="/pro-games" class="block transition-colors font-mono text-sm font-medium text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> //Games </a> </li><li data-astro-cid-3ef6ksr2> <a href="/" class="block transition-colors font-mono text-sm font-medium text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // About Me </a> </li><li data-astro-cid-3ef6ksr2> <a href="/contact" class="block transition-colors font-mono text-sm font-medium text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // Contact </a> </li> </ul> </nav> </header> <script type="module">const t=document.getElementById("mobile-menu-button"),e=document.getElementById("mobile-menu");t?.addEventListener("click",()=>{e?.classList.toggle("hidden"),e?.classList.toggle("flex")});</script>  <main class="pt-16"> <article class="py-20 sm:py-24 px-6 sm:px-12 lg:px-16" style="background-color:#0e0d0b"> <div class="max-w-3xl mx-auto"> <!-- Back link --> <a href="/tech-art" class="inline-flex items-center gap-2 text-sm font-mono text-gray-400 hover:text-white transition-colors"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path> </svg>
+Back to Techart </a> <!-- Title --> <header class="mt-8"> <div class="flex items-center justify-between gap-4"> <span class="text-xs font-mono tracking-widest uppercase" style="color:#8ab870">
+// Professional Project </span> <span class="px-2 py-0.5 rounded bg-gray-950/60 text-[10px] font-mono tracking-widest border" style="color:#8ab870;border-color:#8ab870">
+Live · Production Tested
+</span> </div> <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-2"> UI TextMeshPro Instancing System </h1> <p class="mt-3 text-lg font-mono text-gray-400">Hundreds of uniquely styled UI texts, one draw call</p> <div class="w-[40px] h-[4px] mt-5 rounded-full" style="background-color: #8ab870"></div> </header> <!-- Skills --> <div class="flex flex-wrap gap-2 mt-6"> <span class="px-2.5 py-1 rounded text-xs font-mono text-gray-300 bg-gray-900/40 border border-gray-800"> Unity UI </span><span class="px-2.5 py-1 rounded text-xs font-mono text-gray-300 bg-gray-900/40 border border-gray-800"> TextMeshPro </span><span class="px-2.5 py-1 rounded text-xs font-mono text-gray-300 bg-gray-900/40 border border-gray-800"> Shaders </span><span class="px-2.5 py-1 rounded text-xs font-mono text-gray-300 bg-gray-900/40 border border-gray-800"> C# </span><span class="px-2.5 py-1 rounded text-xs font-mono text-gray-300 bg-gray-900/40 border border-gray-800"> Performance </span> </div> <!-- Body --> <div class="mt-8 space-y-5"> <p class="text-base text-gray-300 leading-relaxed">Normally, every unique combination of text color, outline, underlay, or dilate on TextMeshPro means another material — and every extra material is another draw call. This component sidesteps that entirely: per-instance properties like greyscale, face dilate, outline color/thickness, and underlay color/dilate get baked straight into each character&#39;s mesh UVs and vertex colors at runtime, then read back out by a custom SDF shader. The result is dozens of differently styled texts sharing one material and batching into a single draw call.</p><p class="text-base text-gray-300 leading-relaxed">The system is live in production on Sorry! World by Hasbro, running hundreds of text instances on screen at once with no measurable performance loss.</p> </div> <!-- Inline preview image --> <div class="mt-8 rounded-xl overflow-hidden border" style="border-color:rgba(245,240,227,0.06)"> <img src="/projects/tmp-instanced-02.png" alt="UI TextMeshPro Instancing System" class="w-full h-auto"> </div> <!-- How to use --> <div class="mt-8 rounded-xl border-2 p-6 sm:p-8" style="background-color:#1c1a17;border-color:#8ab870"> <div class="flex items-center gap-2.5"> <span class="text-xl">🛠️</span> <h2 class="text-sm font-mono uppercase tracking-widest font-bold" style="color:#8ab870">
+How To Use
+</h2> </div> <ol class="mt-5 space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed"> <li class="flex gap-3 sm:gap-4"> <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full text-xs font-mono font-bold" style="background-color:#8ab870;color:#0e0d0b"> 1 </span> <span class="pt-0.5">Slap the TMPInstancingUtil component onto an empty UI GameObject — think of it as TextMeshPro&#39;s cooler sibling who showed up with its own UVs.</span> </li><li class="flex gap-3 sm:gap-4"> <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full text-xs font-mono font-bold" style="background-color:#8ab870;color:#0e0d0b"> 2 </span> <span class="pt-0.5">Make a material from the modified TMP SDF shader and put it on that text. This is the only &quot;setup&quot; step, promise.</span> </li><li class="flex gap-3 sm:gap-4"> <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full text-xs font-mono font-bold" style="background-color:#8ab870;color:#0e0d0b"> 3 </span> <span class="pt-0.5">Now use that exact same material on every other text too. Don&#39;t touch its settings between texts — seriously, just don&#39;t, that&#39;s the whole trick.</span> </li><li class="flex gap-3 sm:gap-4"> <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full text-xs font-mono font-bold" style="background-color:#8ab870;color:#0e0d0b"> 4 </span> <span class="pt-0.5">Got a new font? That&#39;s the only time you need a new material. One font = one material, forever, for every styled text using it.</span> </li><li class="flex gap-3 sm:gap-4"> <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full text-xs font-mono font-bold" style="background-color:#8ab870;color:#0e0d0b"> 5 </span> <span class="pt-0.5">Go nuts changing color, outline, underlay, dilate — whatever you want, per text, per instance — and watch it all still melt into a single draw call. Enjoy!</span> </li> </ol> </div> <!-- External link -->  <!-- Tutorial / Code --> <div class="mt-12 space-y-6"> <div class="rounded-xl border p-6 sm:p-8" style="background-color:#1c1a17;border-color:rgba(245,240,227,0.06)"> <h2 class="text-sm font-mono uppercase tracking-widest text-gray-500">// C# (Component + Editor)</h2> <pre class="mt-3 text-xs sm:text-sm text-gray-300 leading-relaxed overflow-x-auto"><code>[DisallowMultipleComponent]
+public class TMPInstancingUtil : BaseTextMeshProUGUI, ITextPreprocessor
+{
+    public string oldFontMaterialName; // Just for reference
+    [Range(0, 1)] public float m_greyscale = 0.0f;
+    [Range(-1, 1)] public float m_FaceDilate = 0.0f;
+    [ColorUsage(true, false)] public Color m_OutlineColor = Color.white;
+    [Range(0f, 1)] public float m_OutlineThickness = 0.0f;
+    [ColorUsage(true, false)] public Color m_UnderlayColor = Color.white;
+    [Range(-1, 1)] public float m_OffsetX = 0.0f;
+    [Range(-1, 1f)] public float m_OffsetY = 0.0f;
+    [Range(-1, 1)] public float m_UnderlayDilate = 0.0f;
+    [HideInInspector][Range(0, 1)] public float m_UnderlaySoftness = 0.0f;
+
+    private List&lt;Vector2&gt; originalUVs01 = new List&lt;Vector2&gt;();
+    private List&lt;Vector4&gt; UV1 = new List&lt;Vector4&gt;();
+    private List&lt;Vector4&gt; outlineUV = new List&lt;Vector4&gt;();
+    private List&lt;Vector4&gt; underlayUV = new List&lt;Vector4&gt;();
+    private Vector3 lastLossyScale;
+    private static Vector3 unity_ColorSpaceLuminance = new Vector3(0.2f, 0.707f, 0.071f);
+    private Color cachedColor;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        cachedColor = color;
+    }
+
+    public override void Rebuild(CanvasUpdate update)
+    {
+        if (this == null) return;
+        if (mesh &amp;&amp; !string.IsNullOrEmpty(text)) ForceMeshUpdate();
+        UpdateMaterial();
+        base.Rebuild(update);
+    }
+
+    private void LateUpdate()
+    {
+        if (transform.lossyScale != lastLossyScale)
+        {
+            lastLossyScale = transform.lossyScale;
+            if (mesh &amp;&amp; !string.IsNullOrEmpty(text)) ForceMeshUpdate();
+        }
+    }
+
+    public override void ForceMeshUpdate(bool ignoreActiveState = false, bool forceTextReparsing = false)
+    {
+        base.ForceMeshUpdate(ignoreActiveState, forceTextReparsing);
+
+        if (mesh == null || string.IsNullOrEmpty(text))
+            return;
+
+        ApplyVertexColors(mesh);
+        ModifyUV(mesh);
+    }
+
+    private bool SubmeshHasVisibleChars(int materialIndex)
+    {
+        if (textInfo == null || textInfo.characterInfo == null) return false;
+
+        for (int i = 0; i &lt; textInfo.characterCount; i++)
+        {
+            var charInfo = textInfo.characterInfo[i];
+            if (charInfo.isVisible &amp;&amp; charInfo.materialReferenceIndex == materialIndex)
+                return true;
+        }
+
+        return false;
+    }
+
+    private void ApplyVertexColors(Mesh mesh)
+    {
+        if (textInfo == null || textInfo.characterCount == 0) return;
+
+        Color32[] vertexColors = mesh.colors32;
+        if (vertexColors == null || vertexColors.Length == 0) return;
+
+        for (int i = 0; i &lt; textInfo.characterCount; i++)
+        {
+            var charInfo = textInfo.characterInfo[i];
+            if (!charInfo.isVisible) continue;
+
+            int materialIndex = charInfo.materialReferenceIndex;
+            int vertexIndex = charInfo.vertexIndex;
+
+            var colors = textInfo.meshInfo[materialIndex].colors32;
+            if (vertexIndex + 3 &gt;= colors.Length) continue;
+
+            for (int j = 0; j &lt; 4; j++)
+            {
+                Color32 original = colors[vertexIndex + j];
+                colors[vertexIndex + j] = ApplyGreyScale(original, m_greyscale);
+            }
+        }
+
+        UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
+    }
+
+    // Bakes per-instance color/outline/underlay properties into UV1/UV2/UV3
+    private void ModifyUV(Mesh mesh)
+    {
+        if (string.IsNullOrEmpty(text) || textInfo == null || textInfo.meshInfo == null)
+            return;
+
+        int subMeshCount = textInfo.meshInfo.Length;
+
+        for (int sm = 0; sm &lt; subMeshCount; sm++)
+        {
+            TMP_MeshInfo meshInfo = textInfo.meshInfo[sm];
+            int vertexCount = meshInfo.mesh.vertexCount;
+
+            if (!SubmeshHasVisibleChars(sm))
+            {
+                meshInfo.Clear();
+                UpdateGeometry(meshInfo.mesh, sm);
+                continue;
+            }
+
+            Mesh subMesh = meshInfo.mesh;
+            subMesh.GetUVs(1, originalUVs01);
+
+            EnsureListCapacity(originalUVs01, vertexCount);
+            EnsureListCapacity(UV1, vertexCount);
+            EnsureListCapacity(outlineUV, vertexCount);
+            EnsureListCapacity(underlayUV, vertexCount);
+
+            for (int i = 0; i &lt; vertexCount; i++)
+            {
+                UV1[i] = new Vector4(m_OffsetX, m_OffsetY, m_OutlineThickness, m_FaceDilate);
+                outlineUV[i] = (Vector4)ApplyGreyScale(m_OutlineColor, m_greyscale);
+                underlayUV[i] = new Vector4(
+                    ApplyGreyScale(m_UnderlayColor, m_greyscale).r,
+                    ApplyGreyScale(m_UnderlayColor, m_greyscale).g,
+                    ApplyGreyScale(m_UnderlayColor, m_greyscale).b,
+                    m_UnderlayDilate);
+            }
+
+            subMesh.SetUVs(1, UV1);
+            subMesh.SetUVs(2, outlineUV);
+            subMesh.SetUVs(3, underlayUV);
+            subMesh.UploadMeshData(false);
+
+            UpdateGeometry(subMesh, sm);
+        }
+    }
+
+    private Color ApplyGreyScale(Color col, float t)
+    {
+        float grey = Vector3.Dot(new Vector3(col.r, col.g, col.b), unity_ColorSpaceLuminance);
+        return Color.Lerp(col, new Color(grey, grey, grey, col.a), t);
+    }
+
+    private void EnsureListCapacity&lt;T&gt;(List&lt;T&gt; list, int requiredCount)
+    {
+        while (list.Count &lt; requiredCount)
+            list.Add(default);
+        if (list.Count &gt; requiredCount)
+            list.RemoveRange(requiredCount, list.Count - requiredCount);
+    }
+}
+
+// --- Custom Editor ---
+#if UNITY_EDITOR
+[CustomEditor(typeof(TMPInstancingUtil), true), CanEditMultipleObjects]
+public class TMPInstancingEditor : TMP_EditorPanelUI
+{
+    private SerializedProperty greyscale;
+    private SerializedProperty faceDilate;
+    private SerializedProperty outlineColor;
+    private SerializedProperty outlineThickness;
+    private SerializedProperty underlayColor;
+    private SerializedProperty offsetX;
+    private SerializedProperty offsetY;
+    private SerializedProperty underlayDialate;
+
+    private SerializedProperty preserveNumbers;
+    private SerializedProperty farsi;
+    private SerializedProperty fixTags;
+    private SerializedProperty isArabic;
+
+    private GUIStyle propertiesTitle;
+    private bool rtlFoldout = true;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        greyscale = serializedObject.FindProperty(&quot;m_greyscale&quot;);
+        faceDilate = serializedObject.FindProperty(&quot;m_FaceDilate&quot;);
+        outlineColor = serializedObject.FindProperty(&quot;m_OutlineColor&quot;);
+        outlineThickness = serializedObject.FindProperty(&quot;m_OutlineThickness&quot;);
+        underlayColor = serializedObject.FindProperty(&quot;m_UnderlayColor&quot;);
+        offsetX = serializedObject.FindProperty(&quot;m_OffsetX&quot;);
+        offsetY = serializedObject.FindProperty(&quot;m_OffsetY&quot;);
+        underlayDialate = serializedObject.FindProperty(&quot;m_UnderlayDilate&quot;);
+
+        preserveNumbers = serializedObject.FindProperty(&quot;preserveNumbers&quot;);
+        farsi = serializedObject.FindProperty(&quot;farsi&quot;);
+        fixTags = serializedObject.FindProperty(&quot;fixTags&quot;);
+        isArabic = serializedObject.FindProperty(&quot;isArabic&quot;);
+
+        propertiesTitle = new GUIStyle(EditorStyles.boldLabel);
+        propertiesTitle.alignment = TextAnchor.MiddleCenter;
+        propertiesTitle.normal.textColor = Color.cyan;
+    }
+
+    public override void OnInspectorGUI()
+    {
+        serializedObject.Update();
+
+        base.OnInspectorGUI();
+
+        EditorGUILayout.Space();
+
+        DrawInstancingBlock();
+        DrawRTLBlock();
+
+        serializedObject.ApplyModifiedProperties();
+    }
+
+    private void DrawInstancingBlock()
+    {
+        EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+
+        EditorGUILayout.LabelField(&quot;Instanced Properties&quot;, propertiesTitle);
+        EditorGUILayout.Space(4);
+
+        EditorGUILayout.PropertyField(greyscale);
+        EditorGUILayout.PropertyField(faceDilate);
+        EditorGUILayout.PropertyField(outlineColor);
+        EditorGUILayout.PropertyField(outlineThickness);
+        EditorGUILayout.PropertyField(underlayColor);
+        EditorGUILayout.PropertyField(offsetX);
+        EditorGUILayout.PropertyField(offsetY);
+        EditorGUILayout.PropertyField(underlayDialate);
+
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.Space(10);
+    }
+
+    private void DrawRTLBlock()
+    {
+        rtlFoldout = EditorGUILayout.Foldout(rtlFoldout, &quot;RTL Settings&quot;, true);
+
+        if (!rtlFoldout) return;
+
+        EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+
+        EditorGUI.BeginChangeCheck();
+
+        EditorGUILayout.PropertyField(farsi);
+        EditorGUILayout.PropertyField(isArabic);
+        EditorGUILayout.PropertyField(preserveNumbers);
+
+        var tmp = target as TMP_Text;
+        if (tmp != null &amp;&amp; tmp.richText)
+        {
+            EditorGUILayout.PropertyField(fixTags);
+        }
+
+        if (GUILayout.Button(&quot;Re-Fix Text&quot;))
+        {
+            ForceTextRefresh();
+        }
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            ForceTextRefresh();
+        }
+
+        EditorGUILayout.EndVertical();
+    }
+
+    private void ForceTextRefresh()
+    {
+        foreach (var t in targets)
+        {
+            TMP_Text tmp = t as TMP_Text;
+            if (tmp == null) continue;
+
+            tmp.ForceMeshUpdate();
+            tmp.SetVerticesDirty();
+            tmp.SetLayoutDirty();
+
+            EditorUtility.SetDirty(tmp);
+        }
+    }
+}
+#endif</code></pre> </div><div class="rounded-xl border p-6 sm:p-8" style="background-color:#1c1a17;border-color:rgba(245,240,227,0.06)"> <h2 class="text-sm font-mono uppercase tracking-widest text-gray-500">// Shader</h2> <pre class="mt-3 text-xs sm:text-sm text-gray-300 leading-relaxed overflow-x-auto"><code>Shader &quot;TextMeshPro/Distance Field_Instancing&quot; {
+
+Properties {
+	_FaceTex			(&quot;Face Texture&quot;, 2D) = &quot;white&quot; {}
+	_FaceUVSpeedX		(&quot;Face UV Speed X&quot;, Range(-5, 5)) = 0.0
+	_FaceUVSpeedY		(&quot;Face UV Speed Y&quot;, Range(-5, 5)) = 0.0
+	_FaceColor		    (&quot;Face Color&quot;, Color) = (1,1,1,1)
+	_FaceDilate			(&quot;Face Dilate&quot;, Range(-1,1)) = 0
+
+	_OutlineColor	    (&quot;Outline Color&quot;, Color) = (0,0,0,1)
+	_OutlineTex			(&quot;Outline Texture&quot;, 2D) = &quot;white&quot; {}
+	_OutlineUVSpeedX	(&quot;Outline UV Speed X&quot;, Range(-5, 5)) = 0.0
+	_OutlineUVSpeedY	(&quot;Outline UV Speed Y&quot;, Range(-5, 5)) = 0.0
+	_OutlineWidth		(&quot;Outline Thickness&quot;, Range(0, 1)) = 0
+	_OutlineSoftness	(&quot;Outline Softness&quot;, Range(0,1)) = 0
+
+	_Bevel				(&quot;Bevel&quot;, Range(0,1)) = 0.5
+	_BevelOffset		(&quot;Bevel Offset&quot;, Range(-0.5,0.5)) = 0
+	_BevelWidth			(&quot;Bevel Width&quot;, Range(-.5,0.5)) = 0
+	_BevelClamp			(&quot;Bevel Clamp&quot;, Range(0,1)) = 0
+	_BevelRoundness		(&quot;Bevel Roundness&quot;, Range(0,1)) = 0
+
+	_LightAngle			(&quot;Light Angle&quot;, Range(0.0, 6.2831853)) = 3.1416
+	_SpecularColor	    (&quot;Specular&quot;, Color) = (1,1,1,1)
+	_SpecularPower		(&quot;Specular&quot;, Range(0,4)) = 2.0
+	_Reflectivity		(&quot;Reflectivity&quot;, Range(5.0,15.0)) = 10
+	_Diffuse			(&quot;Diffuse&quot;, Range(0,1)) = 0.5
+	_Ambient			(&quot;Ambient&quot;, Range(1,0)) = 0.5
+
+	_BumpMap 			(&quot;Normal map&quot;, 2D) = &quot;bump&quot; {}
+	_BumpOutline		(&quot;Bump Outline&quot;, Range(0,1)) = 0
+	_BumpFace			(&quot;Bump Face&quot;, Range(0,1)) = 0
+
+	_ReflectFaceColor	(&quot;Reflection Color&quot;, Color) = (0,0,0,1)
+	_ReflectOutlineColor(&quot;Reflection Color&quot;, Color) = (0,0,0,1)
+	_Cube 				(&quot;Reflection Cubemap&quot;, Cube) = &quot;black&quot; { /* TexGen CubeReflect */ }
+	_EnvMatrixRotation	(&quot;Texture Rotation&quot;, vector) = (0, 0, 0, 0)
+
+
+	_UnderlayColor	    (&quot;Border Color&quot;, Color) = (0,0,0, 0.5)
+	_UnderlayOffsetX	(&quot;Border OffsetX&quot;, Range(-1,1)) = 0
+	_UnderlayOffsetY	(&quot;Border OffsetY&quot;, Range(-1,1)) = 0
+	_UnderlayDilate		(&quot;Border Dilate&quot;, Range(-1,1)) = 0
+	_UnderlaySoftness	(&quot;Border Softness&quot;, Range(0,1)) = 0
+
+	_GlowColor		    (&quot;Color&quot;, Color) = (0, 1, 0, 0.5)
+	_GlowOffset			(&quot;Offset&quot;, Range(-1,1)) = 0
+	_GlowInner			(&quot;Inner&quot;, Range(0,1)) = 0.05
+	_GlowOuter			(&quot;Outer&quot;, Range(0,1)) = 0.05
+	_GlowPower			(&quot;Falloff&quot;, Range(1, 0)) = 0.75
+
+	_WeightNormal		(&quot;Weight Normal&quot;, float) = 0
+	_WeightBold			(&quot;Weight Bold&quot;, float) = 0.5
+
+	_ShaderFlags		(&quot;Flags&quot;, float) = 0
+	_ScaleRatioA		(&quot;Scale RatioA&quot;, float) = 1
+	_ScaleRatioB		(&quot;Scale RatioB&quot;, float) = 1
+	_ScaleRatioC		(&quot;Scale RatioC&quot;, float) = 1
+
+	_MainTex			(&quot;Font Atlas&quot;, 2D) = &quot;white&quot; {}
+	_TextureWidth		(&quot;Texture Width&quot;, float) = 512
+	_TextureHeight		(&quot;Texture Height&quot;, float) = 512
+	_GradientScale		(&quot;Gradient Scale&quot;, float) = 5.0
+	_ScaleX				(&quot;Scale X&quot;, float) = 1.0
+	_ScaleY				(&quot;Scale Y&quot;, float) = 1.0
+	_PerspectiveFilter	(&quot;Perspective Correction&quot;, Range(0, 1)) = 0.875
+	_Sharpness			(&quot;Sharpness&quot;, Range(-1,1)) = 0
+
+	_VertexOffsetX		(&quot;Vertex OffsetX&quot;, float) = 0
+	_VertexOffsetY		(&quot;Vertex OffsetY&quot;, float) = 0
+
+	_MaskCoord			(&quot;Mask Coordinates&quot;, vector) = (0, 0, 32767, 32767)
+	_ClipRect			(&quot;Clip Rect&quot;, vector) = (-32767, -32767, 32767, 32767)
+	_MaskSoftnessX		(&quot;Mask SoftnessX&quot;, float) = 0
+	_MaskSoftnessY		(&quot;Mask SoftnessY&quot;, float) = 0
+
+	_StencilComp		(&quot;Stencil Comparison&quot;, Float) = 8
+	_Stencil			(&quot;Stencil ID&quot;, Float) = 0
+	_StencilOp			(&quot;Stencil Operation&quot;, Float) = 0
+	_StencilWriteMask	(&quot;Stencil Write Mask&quot;, Float) = 255
+	_StencilReadMask	(&quot;Stencil Read Mask&quot;, Float) = 255
+
+	_CullMode			(&quot;Cull Mode&quot;, Float) = 0
+	_ColorMask			(&quot;Color Mask&quot;, Float) = 15
+}
+
+SubShader {
+
+	Tags
+	{
+		&quot;Queue&quot;=&quot;Transparent&quot;
+		&quot;IgnoreProjector&quot;=&quot;True&quot;
+		&quot;RenderType&quot;=&quot;Transparent&quot;
+	}
+
+	Stencil
+	{
+		Ref [_Stencil]
+		Comp [_StencilComp]
+		Pass [_StencilOp]
+		ReadMask [_StencilReadMask]
+		WriteMask [_StencilWriteMask]
+	}
+
+	Cull [_CullMode]
+	ZWrite Off
+	Lighting Off
+	Fog { Mode Off }
+	ZTest [unity_GUIZTestMode]
+	Blend One OneMinusSrcAlpha
+	ColorMask [_ColorMask]
+
+	Pass {
+		CGPROGRAM
+		#pragma target 3.0
+		#pragma vertex VertShader
+		#pragma fragment PixShader
+		#pragma shader_feature __ BEVEL_ON
+		#pragma shader_feature __ UNDERLAY_ON UNDERLAY_INNER
+		#pragma shader_feature __ GLOW_ON
+
+		#pragma multi_compile __ UNITY_UI_CLIP_RECT
+		#pragma multi_compile __ UNITY_UI_ALPHACLIP
+
+		#include &quot;UnityCG.cginc&quot;
+		#include &quot;UnityUI.cginc&quot;
+		#include &quot;TMPro_Properties.cginc&quot;
+		#include &quot;TMPro.cginc&quot;
+
+		struct vertex_t
+		{
+			UNITY_VERTEX_INPUT_INSTANCE_ID
+			float4	position		: POSITION;
+			float3	normal			: NORMAL;
+			fixed4	color			: COLOR;
+			float4	texcoord0		: TEXCOORD0;
+			float4	texcoord1		: TEXCOORD1;
+			float4 myCol : TEXCOORD2;   // per-instance outline color (baked from UV2)
+			float4 myCol2 : TEXCOORD3;  // per-instance underlay color + dilate (baked from UV3)
+		};
+
+		struct pixel_t
+		{
+			UNITY_VERTEX_INPUT_INSTANCE_ID
+			UNITY_VERTEX_OUTPUT_STEREO
+			float4	position		: SV_POSITION;
+			fixed4	color			: COLOR;
+			float2	atlas			: TEXCOORD0;		// Atlas
+			float4	param			: TEXCOORD1;		// alphaClip, scale, bias, weight
+			float4	mask			: TEXCOORD2;		// Position in object space(xy), pixel Size(zw)
+			float3	viewDir			: TEXCOORD3;
+
+		    #if (UNDERLAY_ON || UNDERLAY_INNER)
+			float4	texcoord2		: TEXCOORD4;		// u,v, scale, bias
+			fixed4	underlayColor	: COLOR1;
+		    #endif
+
+		    float4 textures			: TEXCOORD5;
+			float4 myCol : TEXCOORD6;
+			float4 myCol2 : TEXCOORD7;
+			float4 myCol3 : TEXCOORD8;
+		};
+
+		// Used by Unity internally to handle Texture Tiling and Offset.
+		float4 _FaceTex_ST;
+		float4 _OutlineTex_ST;
+		float _UIMaskSoftnessX;
+        float _UIMaskSoftnessY;
+        int _UIVertexColorAlwaysGammaSpace;
+
+		pixel_t VertShader(vertex_t input)
+		{
+			pixel_t output;
+
+			UNITY_INITIALIZE_OUTPUT(pixel_t, output);
+			UNITY_SETUP_INSTANCE_ID(input);
+			UNITY_TRANSFER_INSTANCE_ID(input,output);
+			UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
+
+			float bold = step(input.texcoord0.w, 0);
+
+			float4 vert = input.position;
+			vert.x += _VertexOffsetX;
+			vert.y += _VertexOffsetY;
+
+			float4 vPosition = UnityObjectToClipPos(vert);
+
+			float2 pixelSize = vPosition.w;
+			pixelSize /= float2(_ScaleX, _ScaleY) * abs(mul((float2x2)UNITY_MATRIX_P, _ScreenParams.xy));
+			float scale = rsqrt(dot(pixelSize, pixelSize));
+			scale *= abs(input.texcoord0.w) * _GradientScale * (_Sharpness + 1);
+			if (UNITY_MATRIX_P[3][3] == 0) scale = lerp(abs(scale) * (1 - _PerspectiveFilter), scale, abs(dot(UnityObjectToWorldNormal(input.normal.xyz), normalize(WorldSpaceViewDir(vert)))));
+
+			float weight = lerp(_WeightNormal, _WeightBold, bold) / 4.0;
+			weight = (weight + input.texcoord1.w) * _ScaleRatioA * 0.5;
+
+			float bias =(.5 - weight) + (.5 / scale);
+
+			float alphaClip = (1.0 - input.texcoord1.z * _ScaleRatioA - _OutlineSoftness * _ScaleRatioA);
+
+		    #if GLOW_ON
+			alphaClip = min(alphaClip, 1.0 - _GlowOffset * _ScaleRatioB - _GlowOuter * _ScaleRatioB);
+		    #endif
+
+			alphaClip = alphaClip / 2.0 - ( .5 / scale) - weight;
+
+		    #if (UNDERLAY_ON || UNDERLAY_INNER)
+			float4 underlayColor = float4(input.myCol2.xyz,1);
+			underlayColor.rgb *= underlayColor.a;
+
+			float bScale = scale;
+			bScale /= 1 + ((_UnderlaySoftness*_ScaleRatioC) * bScale);
+			float bBias = (0.5 - weight) * bScale - 0.5 - ((input.myCol2.w * _ScaleRatioC) * 0.5 * bScale);
+
+			float x = -(input.texcoord1.x * _ScaleRatioC) * _GradientScale / _TextureWidth;
+			float y = -(input.texcoord1.y * _ScaleRatioC) * _GradientScale / _TextureHeight;
+			float2 bOffset = float2(x, y);
+		    #endif
+
+			// Generate UV for the Masking Texture
+			float4 clampedRect = clamp(_ClipRect, -2e10, 2e10);
+			float2 maskUV = (vert.xy - clampedRect.xy) / (clampedRect.zw - clampedRect.xy);
+
+			// Support for texture tiling and offset
+			float2 textureUV = input.texcoord1;
+			float2 faceUV = TRANSFORM_TEX(textureUV, _FaceTex);
+			float2 outlineUV = TRANSFORM_TEX(textureUV, _OutlineTex);
+
+
+            if (_UIVertexColorAlwaysGammaSpace &amp;&amp; !IsGammaSpace())
+            {
+                input.color.rgb = UIGammaToLinear(input.color.rgb);
+            }
+			output.position = vPosition;
+			output.color = input.color;
+			output.atlas =	input.texcoord0;
+			output.param =	float4(alphaClip, scale, bias, weight);
+			const half2 maskSoftness = half2(max(_UIMaskSoftnessX, _MaskSoftnessX), max(_UIMaskSoftnessY, _MaskSoftnessY));
+			output.mask = half4(vert.xy * 2 - clampedRect.xy - clampedRect.zw, 0.25 / (0.25 * maskSoftness + pixelSize.xy));
+			output.viewDir =	mul((float3x3)_EnvMatrix, _WorldSpaceCameraPos.xyz - mul(unity_ObjectToWorld, vert).xyz);
+			#if (UNDERLAY_ON || UNDERLAY_INNER)
+			output.texcoord2 = float4(input.texcoord0 + bOffset, bScale, bBias);
+			output.underlayColor =	underlayColor;
+			#endif
+			output.textures = float4(faceUV, outlineUV);
+
+			// Per-instance style data, carried straight from the baked UVs
+			output.myCol = input.myCol;
+			output.myCol2 = input.myCol2;
+			output.myCol3 = input.texcoord1;
+			return output;
+		}
+
+
+		fixed4 PixShader(pixel_t input) : SV_Target
+		{
+			UNITY_SETUP_INSTANCE_ID(input);
+
+			float c = tex2D(_MainTex, input.atlas).a;
+
+		    #ifndef UNDERLAY_ON
+			clip(c - input.param.x);
+		    #endif
+
+			float	scale	= input.param.y;
+			float	bias	= input.param.z;
+			float	weight	= input.param.w;
+			float	sd = (bias - c) * scale;
+
+			// Outline thickness/softness come from the per-instance baked data
+			float outline = (input.myCol3.z * _ScaleRatioA) * scale;
+			float softness = (_OutlineSoftness * _ScaleRatioA) * scale;
+
+			half4 faceColor = _FaceColor;
+			half4 outlineColor = input.myCol; // per-instance outline color
+
+			faceColor.rgb *= input.color.rgb;
+
+			faceColor *= tex2D(_FaceTex, input.textures.xy + float2(_FaceUVSpeedX, _FaceUVSpeedY) * _Time.y);
+			outlineColor *= tex2D(_OutlineTex, input.textures.zw + float2(_OutlineUVSpeedX, _OutlineUVSpeedY) * _Time.y);
+
+			faceColor = GetColor(sd, faceColor, outlineColor, outline, softness);
+
+		    #if BEVEL_ON
+			float3 dxy = float3(0.5 / _TextureWidth, 0.5 / _TextureHeight, 0);
+			float3 n = GetSurfaceNormal(input.atlas, weight, dxy);
+
+			float3 bump = UnpackNormal(tex2D(_BumpMap, input.textures.xy + float2(_FaceUVSpeedX, _FaceUVSpeedY) * _Time.y)).xyz;
+			bump *= lerp(_BumpFace, _BumpOutline, saturate(sd + outline * 0.5));
+			n = normalize(n- bump);
+
+			float3 light = normalize(float3(sin(_LightAngle), cos(_LightAngle), -1.0));
+
+			float3 col = GetSpecular(n, light);
+			faceColor.rgb += col*faceColor.a;
+			faceColor.rgb *= 1-(dot(n, light)*_Diffuse);
+			faceColor.rgb *= lerp(_Ambient, 1, n.z*n.z);
+
+			fixed4 reflcol = texCUBE(_Cube, reflect(input.viewDir, -n));
+			faceColor.rgb += reflcol.rgb * lerp(_ReflectFaceColor.rgb, _ReflectOutlineColor.rgb, saturate(sd + outline * 0.5)) * faceColor.a;
+		    #endif
+
+		    #if UNDERLAY_ON
+			float d = tex2D(_MainTex, input.texcoord2.xy).a * input.texcoord2.z;
+			faceColor += input.underlayColor * saturate(d - input.texcoord2.w) * (1 - faceColor.a);
+		    #endif
+
+		    #if UNDERLAY_INNER
+			float d = tex2D(_MainTex, input.texcoord2.xy).a * input.texcoord2.z;
+			faceColor += input.underlayColor * (1 - saturate(d - input.texcoord2.w)) * saturate(1 - sd) * (1 - faceColor.a);
+		    #endif
+
+		    #if GLOW_ON
+			float4 glowColor = GetGlowColor(sd, scale);
+			faceColor.rgb += glowColor.rgb * glowColor.a;
+		    #endif
+
+		// Alternative implementation to UnityGet2DClipping with support for softness.
+		    #if UNITY_UI_CLIP_RECT
+			half2 m = saturate((_ClipRect.zw - _ClipRect.xy - abs(input.mask.xy)) * input.mask.zw);
+			faceColor *= m.x * m.y;
+		    #endif
+
+		    #if UNITY_UI_ALPHACLIP
+			clip(faceColor.a - 0.001);
+		    #endif
+
+  		    return faceColor * input.color.a;
+		}
+		ENDCG
+	}
+}
+
+Fallback &quot;TextMeshPro/Mobile/Distance Field&quot;
+CustomEditor &quot;TMPro.EditorUtilities.TMP_SDFShaderGUI&quot;
+}</code></pre> </div> </div> </div> </article>  </main> <footer class="relative overflow-hidden border-t border-white/5 py-12 px-6 sm:px-8 bg-[#0e0d0b]" data-astro-cid-sz7xmlte> <!-- Accent gradient hairline along the top edge --> <div class="absolute top-0 left-0 right-0 h-px opacity-60" style="background: linear-gradient(90deg, transparent, #8ab870, transparent)" data-astro-cid-sz7xmlte></div> <!-- Faint grid pattern, echoes the hero section --> <svg aria-hidden="true" class="absolute inset-0 -z-10 size-full opacity-10 [mask-image:radial-gradient(100%_100%_at_bottom_left,white,transparent)]" style="stroke:rgba(245,240,227,0.1)" data-astro-cid-sz7xmlte> <defs data-astro-cid-sz7xmlte> <pattern x="50%" y="-1" id="footer-grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse" data-astro-cid-sz7xmlte> <path d="M.5 40V.5H40" fill="none" data-astro-cid-sz7xmlte></path> </pattern> </defs> <rect fill="url(#footer-grid-pattern)" width="100%" height="100%" stroke-width="0" data-astro-cid-sz7xmlte></rect> </svg> <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6" data-astro-cid-sz7xmlte> <div data-astro-cid-sz7xmlte> <h2 class="font-mono text-lg font-bold tracking-tight" data-astro-cid-sz7xmlte> <span style="color: #8ab870" data-astro-cid-sz7xmlte>&gt;</span> <span class="text-white" data-astro-cid-sz7xmlte>ShaderTrix</span> <span class="inline-block w-2 h-4 ml-1 align-middle animate-pulse" style="background-color: #8ab870" data-astro-cid-sz7xmlte></span> </h2> <p class="text-xs font-mono text-gray-500 mt-1" data-astro-cid-sz7xmlte>
+// Technical Artist | 3D Artist | Graphics Programmer
+</p> <div class="flex items-center gap-2 mt-4 text-gray-400" data-astro-cid-sz7xmlte> <a href="mailto:shivanshuchauhan1998@gmail.com" class="social-icon flex items-center justify-center w-8 h-8 rounded-lg border border-white/5 transition-all duration-300 hover:-translate-y-0.5" aria-label="Email" data-astro-cid-sz7xmlte> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-sz7xmlte> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" data-astro-cid-sz7xmlte></path> </svg> </a> <a href="https://www.linkedin.com/in/shivanshu-chauhan-89095b186" target="_blank" rel="noopener noreferrer" class="social-icon flex items-center justify-center w-8 h-8 rounded-lg border border-white/5 transition-all duration-300 hover:-translate-y-0.5" aria-label="LinkedIn" data-astro-cid-sz7xmlte> <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" data-astro-cid-sz7xmlte> <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" data-astro-cid-sz7xmlte></path> </svg> </a> <a href="https://github.com/ShaderTrix" target="_blank" rel="noopener noreferrer" class="social-icon flex items-center justify-center w-8 h-8 rounded-lg border border-white/5 transition-all duration-300 hover:-translate-y-0.5" aria-label="GitHub" data-astro-cid-sz7xmlte> <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" data-astro-cid-sz7xmlte> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.0.069-.608.0 1.003.702 1.531 1.532 1.531.892 0 1.634-.559 2.03-1.02.086-.615.333-1.02.606-1.255-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.024A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.293 2.747-1.024 2.747-1.024.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" data-astro-cid-sz7xmlte></path> </svg> </a> <a href="https://www.artstation.com/shivanshuchauhan/albums/6216110" target="_blank" rel="noopener noreferrer" class="social-icon flex items-center justify-center w-8 h-8 rounded-lg border border-white/5 transition-all duration-300 hover:-translate-y-0.5" aria-label="ArtStation" data-astro-cid-sz7xmlte> <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" data-astro-cid-sz7xmlte> <path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.333h13.457l-2.792-4.838H0zm24 .19a2.41 2.41 0 0 0-.336-1.218L15.366 1.81a2.424 2.424 0 0 0-2.115-1.244H9.595l12.965 22.42 1.06-1.835A2.42 2.42 0 0 0 24 17.913zM12.453 7.555l4.515 7.823H7.937z" data-astro-cid-sz7xmlte></path> </svg> </a> <a href="https://www.youtube.com/@shivanshuchauhan3032" target="_blank" rel="noopener noreferrer" class="social-icon flex items-center justify-center w-8 h-8 rounded-lg border border-white/5 transition-all duration-300 hover:-translate-y-0.5" aria-label="YouTube" data-astro-cid-sz7xmlte> <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" data-astro-cid-sz7xmlte> <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" data-astro-cid-sz7xmlte></path> </svg> </a> </div> </div> <div class="flex flex-col items-start md:items-end gap-3 font-mono text-xs" data-astro-cid-sz7xmlte> <nav class="flex flex-wrap items-center gap-x-4 gap-y-2 text-gray-400" data-astro-cid-sz7xmlte> <a href="/tech-art" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Techart</a> <a href="/art" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Art</a> <a href="/pro-games" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Games</a> <a href="/" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>About Me</a> <a href="/contact" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Contact</a> </nav> <div class="flex items-center gap-4 mt-1" data-astro-cid-sz7xmlte> <p class="text-gray-600" data-astro-cid-sz7xmlte>
+&copy; 2026 ShaderTrix. Built clean.
+</p> <a href="#" id="back-to-top" class="inline-flex items-center gap-1.5 transition-colors hover:text-white" style="color: #8ab870" aria-label="Back to top" data-astro-cid-sz7xmlte>
+Back to top
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-sz7xmlte> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7 7 7M12 3v18" data-astro-cid-sz7xmlte></path> </svg> </a> </div> </div> </div> </footer>  <script type="module">document.getElementById("back-to-top")?.addEventListener("click",e=>{e.preventDefault(),window.scrollTo({top:0,behavior:"smooth"})});</script> </body></html>

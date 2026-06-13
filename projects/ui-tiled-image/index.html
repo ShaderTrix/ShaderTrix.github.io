@@ -1,0 +1,370 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.12.3"><meta name="description" content="Unity UI Systems, Rendering, Shaders, GPU-driven Systems and Tool Development"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><!-- Loading Geist Sans for Headings and Geist Mono for code tags --><link href="[https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap](https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap)"><title>UI Tiled Image - ShaderTrix</title><link rel="stylesheet" href="/_astro/art.cP1pEIfd.css"></head> <body style="background-color:#0e0d0b"> <div class="fixed inset-0 -z-10"> <img src="/bg.png" alt="" class="w-full h-full object-cover"> </div> <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-[#0e0d0b]/80 backdrop-blur-md border-b border-white/5 transition-all duration-300" data-astro-cid-3ef6ksr2> <!-- Accent gradient hairline --> <div class="absolute bottom-0 left-0 right-0 h-px opacity-60" style="background: linear-gradient(90deg, transparent, #8ab870, transparent)" data-astro-cid-3ef6ksr2></div> <nav class="max-w-7xl mx-auto px-6 sm:px-8 py-4" data-astro-cid-3ef6ksr2> <div class="flex items-center justify-between gap-4" data-astro-cid-3ef6ksr2> <a href="/" class="group flex items-center gap-2.5 font-mono text-sm font-bold text-white whitespace-nowrap transition-opacity hover:opacity-80" data-astro-cid-3ef6ksr2> <span class="inline-block w-2 h-2 rounded-full animate-pulse" style="background-color: #8ab870; box-shadow: 0 0 8px #8ab870" data-astro-cid-3ef6ksr2></span> <span class="text-gray-500 transition-colors group-hover:text-white" data-astro-cid-3ef6ksr2>&gt;</span> ShaderTrix </a> <ul class="hidden md:flex items-center gap-6 lg:gap-8" data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/tech-art" class="relative py-1 transition-colors font-mono text-sm font-medium group text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // Techart <span class="absolute left-0 -bottom-0.5 h-[2px] rounded-full transition-all duration-300 w-0 group-hover:w-full" style="background-color: #8ab870" data-astro-cid-3ef6ksr2></span> </a> </li><li data-astro-cid-3ef6ksr2> <a href="/art" class="relative py-1 transition-colors font-mono text-sm font-medium group text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // Art <span class="absolute left-0 -bottom-0.5 h-[2px] rounded-full transition-all duration-300 w-0 group-hover:w-full" style="background-color: #8ab870" data-astro-cid-3ef6ksr2></span> </a> </li><li data-astro-cid-3ef6ksr2> <a href="/pro-games" class="relative py-1 transition-colors font-mono text-sm font-medium group text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> //Games <span class="absolute left-0 -bottom-0.5 h-[2px] rounded-full transition-all duration-300 w-0 group-hover:w-full" style="background-color: #8ab870" data-astro-cid-3ef6ksr2></span> </a> </li><li data-astro-cid-3ef6ksr2> <a href="/" class="relative py-1 transition-colors font-mono text-sm font-medium group text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // About Me <span class="absolute left-0 -bottom-0.5 h-[2px] rounded-full transition-all duration-300 w-0 group-hover:w-full" style="background-color: #8ab870" data-astro-cid-3ef6ksr2></span> </a> </li><li data-astro-cid-3ef6ksr2> <a href="/contact" class="relative py-1 transition-colors font-mono text-sm font-medium group text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // Contact <span class="absolute left-0 -bottom-0.5 h-[2px] rounded-full transition-all duration-300 w-0 group-hover:w-full" style="background-color: #8ab870" data-astro-cid-3ef6ksr2></span> </a> </li> </ul> <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white" aria-label="Toggle menu" data-astro-cid-3ef6ksr2> <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-3ef6ksr2> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" data-astro-cid-3ef6ksr2></path> </svg> </button> </div> <ul id="mobile-menu" class="hidden md:hidden flex-col gap-3 pt-4 pb-2" data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/tech-art" class="block transition-colors font-mono text-sm font-medium text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // Techart </a> </li><li data-astro-cid-3ef6ksr2> <a href="/art" class="block transition-colors font-mono text-sm font-medium text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // Art </a> </li><li data-astro-cid-3ef6ksr2> <a href="/pro-games" class="block transition-colors font-mono text-sm font-medium text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> //Games </a> </li><li data-astro-cid-3ef6ksr2> <a href="/" class="block transition-colors font-mono text-sm font-medium text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // About Me </a> </li><li data-astro-cid-3ef6ksr2> <a href="/contact" class="block transition-colors font-mono text-sm font-medium text-gray-400 hover:text-white" style="" data-astro-cid-3ef6ksr2> // Contact </a> </li> </ul> </nav> </header> <script type="module">const t=document.getElementById("mobile-menu-button"),e=document.getElementById("mobile-menu");t?.addEventListener("click",()=>{e?.classList.toggle("hidden"),e?.classList.toggle("flex")});</script>  <main class="pt-16"> <article class="py-20 sm:py-24 px-6 sm:px-12 lg:px-16" style="background-color:#0e0d0b"> <div class="max-w-3xl mx-auto"> <!-- Back link --> <a href="/tech-art" class="inline-flex items-center gap-2 text-sm font-mono text-gray-400 hover:text-white transition-colors"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path> </svg>
+Back to Techart </a> <!-- Title --> <header class="mt-8"> <div class="flex items-center justify-between gap-4"> <span class="text-xs font-mono tracking-widest uppercase" style="color:#8ab870">
+// Professional Project </span> <span class="px-2 py-0.5 rounded bg-gray-950/60 text-[10px] font-mono tracking-widest border" style="color:#8ab870;border-color:#8ab870">
+Live · Production Tested
+</span> </div> <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-2"> UI Tiled Image </h1> <p class="mt-3 text-lg font-mono text-gray-400">One big image, sliced into atlas-friendly pieces, drawn as one quad</p> <div class="w-[40px] h-[4px] mt-5 rounded-full" style="background-color: #8ab870"></div> </header> <!-- Skills --> <div class="flex flex-wrap gap-2 mt-6"> <span class="px-2.5 py-1 rounded text-xs font-mono text-gray-300 bg-gray-900/40 border border-gray-800"> Unity UI </span><span class="px-2.5 py-1 rounded text-xs font-mono text-gray-300 bg-gray-900/40 border border-gray-800"> Shaders </span><span class="px-2.5 py-1 rounded text-xs font-mono text-gray-300 bg-gray-900/40 border border-gray-800"> Sprite Atlas </span><span class="px-2.5 py-1 rounded text-xs font-mono text-gray-300 bg-gray-900/40 border border-gray-800"> C# </span><span class="px-2.5 py-1 rounded text-xs font-mono text-gray-300 bg-gray-900/40 border border-gray-800"> Performance </span> </div> <!-- Body --> <div class="mt-8 space-y-5"> <p class="text-base text-gray-300 leading-relaxed">Big UI images are annoying for sprite atlases — they either hog a huge chunk of atlas space or get rejected entirely if they don&#39;t fit. The fix here is to slice the source image into a grid of smaller sprites (Sprite Mode: Multiple), which pack into the atlas way more efficiently alongside everything else. The component reads that slice data straight off the sprite — grid size, cell size, and each tile&#39;s atlas UV region — with zero manual setup beyond hitting &#39;Force Resync Chunks&#39;.</p><p class="text-base text-gray-300 leading-relaxed">On screen, it draws a single quad, not a grid of quads. A small custom shader does the trick: for every pixel it figures out which grid cell that point falls into, looks up that cell&#39;s atlas region, and remaps the UV to sample the right tile. End result: the image looks whole and seamless, but it&#39;s actually built from a bunch of small, atlas-friendly pieces — one material, one draw call.</p><p class="text-base text-gray-300 leading-relaxed">Live in production on Sorry! World by Hasbro, used to fit large UI art into the sprite atlas without blowing the budget or splitting it into multiple draw calls.</p> </div> <!-- Inline preview image --> <div class="mt-8 rounded-xl overflow-hidden border" style="border-color:rgba(245,240,227,0.06)"> <img src="/projects/tiled-image.png" alt="UI Tiled Image" class="w-full h-auto"> </div> <!-- How to use --> <div class="mt-8 rounded-xl border-2 p-6 sm:p-8" style="background-color:#1c1a17;border-color:#8ab870"> <div class="flex items-center gap-2.5"> <span class="text-xl">🛠️</span> <h2 class="text-sm font-mono uppercase tracking-widest font-bold" style="color:#8ab870">
+How To Use
+</h2> </div> <ol class="mt-5 space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed"> <li class="flex gap-3 sm:gap-4"> <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full text-xs font-mono font-bold" style="background-color:#8ab870;color:#0e0d0b"> 1 </span> <span class="pt-0.5">Set the source image&#39;s Sprite Mode to Multiple — Unity needs to know it&#39;s allowed to be chopped up.</span> </li><li class="flex gap-3 sm:gap-4"> <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full text-xs font-mono font-bold" style="background-color:#8ab870;color:#0e0d0b"> 2 </span> <span class="pt-0.5">Open the Sprite Editor and slice it into a grid — 5x5, 10x10, whatever size cells you like — then hit Apply.</span> </li><li class="flex gap-3 sm:gap-4"> <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full text-xs font-mono font-bold" style="background-color:#8ab870;color:#0e0d0b"> 3 </span> <span class="pt-0.5">Make sure it actually gets packed into a sprite atlas. That&#39;s the entire point of this exercise, don&#39;t skip it.</span> </li><li class="flex gap-3 sm:gap-4"> <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full text-xs font-mono font-bold" style="background-color:#8ab870;color:#0e0d0b"> 4 </span> <span class="pt-0.5">Drop the UI_TiledImage component onto an empty UI GameObject, point it at your sliced sprite, and smash the Resync Chunks button.</span> </li> </ol> </div> <!-- External link -->  <!-- Tutorial / Code --> <div class="mt-12 space-y-6"> <div class="rounded-xl border p-6 sm:p-8" style="background-color:#1c1a17;border-color:rgba(245,240,227,0.06)"> <h2 class="text-sm font-mono uppercase tracking-widest text-gray-500">// C# (Component + Editor)</h2> <pre class="mt-3 text-xs sm:text-sm text-gray-300 leading-relaxed overflow-x-auto"><code>[RequireComponent(typeof(CanvasRenderer))]
+public class UI_TiledImage : MaskableGraphic, ILayoutElement
+{
+    public Sprite sprite;
+    public bool preserveAspect = false;
+
+    [System.Serializable]
+    public struct SpriteChunk
+    {
+        public Sprite sprite;
+        public int col;
+        public int row;
+        public Vector4 uvRegion; // (offsetX, offsetY, sizeX, sizeY) in atlas UV space
+    }
+
+    [SerializeField] private List&lt;SpriteChunk&gt; _chunks = new List&lt;SpriteChunk&gt;();
+
+    [SerializeField] private int _columns = 1;
+    [SerializeField] private int _rows = 1;
+    [SerializeField] private Vector2 _cellSize = Vector2.one; // pixel size of one slice
+    [SerializeField] private Shader _tiledShader;
+    private Vector4[] _regions;
+    private const string TiledShaderName = &quot;Unlit/UI_TiledImage&quot;;
+    static readonly int ID_Regions = Shader.PropertyToID(&quot;_ChunkRegions&quot;);
+    static readonly int ID_Columns = Shader.PropertyToID(&quot;_GridColumns&quot;);
+    static readonly int ID_Rows = Shader.PropertyToID(&quot;_GridRows&quot;);
+    static readonly int ID_Count = Shader.PropertyToID(&quot;_ChunkCount&quot;);
+
+    private Material _matInstance;
+
+    public override Texture mainTexture =&gt; sprite != null ? sprite.texture : s_WhiteTexture;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        ResolveShader();
+        UnityEngine.U2D.SpriteAtlasManager.atlasRegistered += OnAtlasRegistered;
+        BuildRegionArray();
+        SetMaterialDirty();
+        SetVerticesDirty();
+    }
+
+    protected override void OnDisable()
+    {
+        UnityEngine.U2D.SpriteAtlasManager.atlasRegistered -= OnAtlasRegistered;
+        base.OnDisable();
+        if (_matInstance != null)
+        {
+            if (Application.isPlaying) Destroy(_matInstance); else DestroyImmediate(_matInstance);
+            _matInstance = null;
+        }
+    }
+
+    private void OnAtlasRegistered(UnityEngine.U2D.SpriteAtlas atlas)
+    {
+        BuildRegionArray();
+        SetMaterialDirty();
+    }
+
+    public override Material GetModifiedMaterial(Material baseMaterial)
+    {
+        Material baseMat = base.GetModifiedMaterial(baseMaterial);
+        if (baseMat == null) return null;
+
+        Shader shader = ResolveShader();
+        if (shader == null) return baseMat;
+
+        if (_matInstance == null)
+            _matInstance = new Material(shader) { name = &quot;UI_TiledImage (Instance)&quot; };
+        else if (_matInstance.shader != shader)
+            _matInstance.shader = shader;
+
+        CopyStencilState(baseMat, _matInstance);
+        ApplyToMaterial(_matInstance);
+        return _matInstance;
+    }
+
+    private void ApplyToMaterial(Material m)
+    {
+        if (m == null || _regions == null || _regions.Length == 0) return;
+        m.SetVectorArray(ID_Regions, _regions);
+        m.SetInteger(ID_Columns, _columns);
+        m.SetInteger(ID_Rows, _rows);
+        m.SetInteger(ID_Count, _chunks.Count);
+    }
+
+    // Draws a single full-rect quad — the shader does the per-cell tiling
+    protected override void OnPopulateMesh(VertexHelper vh)
+    {
+        vh.Clear();
+        if (sprite == null || _chunks == null || _chunks.Count == 0) return;
+
+        Rect r = GetDrawingRect(preserveAspect);
+        if (r.width &lt;= 0 || r.height &lt;= 0) return;
+
+        Color32 c = color;
+        vh.AddVert(new Vector3(r.xMin, r.yMin), c, new Vector2(0f, 0f));
+        vh.AddVert(new Vector3(r.xMin, r.yMax), c, new Vector2(0f, 1f));
+        vh.AddVert(new Vector3(r.xMax, r.yMax), c, new Vector2(1f, 1f));
+        vh.AddVert(new Vector3(r.xMax, r.yMin), c, new Vector2(1f, 0f));
+
+        vh.AddTriangle(0, 1, 2);
+        vh.AddTriangle(2, 3, 0);
+    }
+
+    // Reads the per-cell atlas UV regions straight off the sliced sprite
+    private void BuildRegionArray()
+    {
+        if (_chunks == null || _chunks.Count == 0) { _regions = null; return; }
+
+        int len = Mathf.Max(_columns * _rows, _chunks.Count);
+        _regions = new Vector4[len];
+        for (int i = 0; i &lt; _chunks.Count; i++)
+        {
+            var ch = _chunks[i];
+
+            Vector4 region = ch.uvRegion;
+            if (ch.sprite != null)
+            {
+                Vector4 outer = UnityEngine.Sprites.DataUtility.GetOuterUV(ch.sprite);
+                region = new Vector4(outer.x, outer.y, outer.z - outer.x, outer.w - outer.y);
+            }
+
+            int idx = ch.row * _columns + ch.col;
+            if (idx &gt;= 0 &amp;&amp; idx &lt; _regions.Length)
+                _regions[idx] = region;
+        }
+    }
+
+    // Re-derives grid size, cell size and chunk list from the sprite&#39;s slice data
+    public void UpdateChunks()
+    {
+        if (sprite == null) { _chunks.Clear(); _regions = null; return; }
+#if UNITY_EDITOR
+        string path = AssetDatabase.GetAssetPath(sprite.texture);
+        Object[] allAssets = AssetDatabase.LoadAllAssetsAtPath(path);
+        if (allAssets == null || allAssets.Length &lt;= 1) return;
+
+        var sprites = allAssets.OfType&lt;Sprite&gt;().ToList();
+        if (sprites.Count == 0) return;
+
+        float texW = sprite.texture.width;
+        float texH = sprite.texture.height;
+
+        _cellSize = new Vector2(
+            sprites.Min(s =&gt; s.rect.width),
+            sprites.Min(s =&gt; s.rect.height));
+
+        const float tol = 1f; // pixels
+        _columns = CountDistinct(sprites.Select(s =&gt; s.rect.x), tol);
+        _rows = CountDistinct(sprites.Select(s =&gt; s.rect.y), tol);
+
+        _chunks.Clear();
+        foreach (var s in sprites)
+        {
+            int col = Mathf.RoundToInt(s.rect.x / _cellSize.x);
+            // Unity Y is bottom-up; grid rows are top-down so we flip.
+            int row = Mathf.RoundToInt((texH - s.rect.y - s.rect.height) / _cellSize.y);
+
+            Vector4 outer = UnityEngine.Sprites.DataUtility.GetOuterUV(s);
+            Vector4 uvRegion = new Vector4(
+                outer.x, outer.y,
+                outer.z - outer.x, outer.w - outer.y);
+
+            _chunks.Add(new SpriteChunk { sprite = s, col = col, row = row, uvRegion = uvRegion });
+        }
+
+        BuildRegionArray();
+        EditorUtility.SetDirty(this);
+#endif
+    }
+
+    public override void SetNativeSize()
+    {
+        if (sprite == null) return;
+        rectTransform.sizeDelta = new Vector2(_cellSize.x * _columns, _cellSize.y * _rows);
+        SetAllDirty();
+    }
+}
+
+// --- Custom Editor ---
+[CustomEditor(typeof(UI_TiledImage), true)]
+[CanEditMultipleObjects]
+public class UI_TiledImageEditor : GraphicEditor
+{
+    SerializedProperty _sprite, _preserveAspect, _maskable, _tiledShader;
+    SerializedProperty _columns, _rows, _cellSize;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        _sprite         = serializedObject.FindProperty(&quot;sprite&quot;);
+        _preserveAspect = serializedObject.FindProperty(&quot;preserveAspect&quot;);
+        _maskable       = serializedObject.FindProperty(&quot;m_Maskable&quot;);
+        _tiledShader    = serializedObject.FindProperty(&quot;_tiledShader&quot;);
+
+        _columns  = serializedObject.FindProperty(&quot;_columns&quot;);
+        _rows     = serializedObject.FindProperty(&quot;_rows&quot;);
+        _cellSize = serializedObject.FindProperty(&quot;_cellSize&quot;);
+    }
+
+    public override void OnInspectorGUI()
+    {
+        serializedObject.Update();
+
+        EditorGUI.BeginChangeCheck();
+        EditorGUILayout.PropertyField(_sprite);
+        bool spriteChanged = EditorGUI.EndChangeCheck();
+
+        AppearanceControlsGUI();
+        RaycastControlsGUI();
+        EditorGUILayout.PropertyField(_maskable);
+        EditorGUILayout.PropertyField(_preserveAspect);
+        EditorGUILayout.PropertyField(_tiledShader, new GUIContent(&quot;Tiled Shader&quot;));
+
+        // Read-only, auto-derived grid/cell info for quick sanity checks
+        using (new EditorGUI.DisabledScope(true))
+        {
+            EditorGUILayout.LabelField(&quot;Grid&quot;,
+                $&quot;{_columns.intValue} x {_rows.intValue}  ({_columns.intValue * _rows.intValue} cells)&quot;);
+            EditorGUILayout.LabelField(&quot;Cell Size&quot;,
+                $&quot;{_cellSize.vector2Value.x} x {_cellSize.vector2Value.y} px&quot;);
+        }
+
+        serializedObject.ApplyModifiedProperties();
+
+        // Re-derive immediately when the sprite is swapped in the inspector
+        if (spriteChanged)
+        {
+            foreach (var t in targets)
+            {
+                var ci = (UI_TiledImage)t;
+                ci.UpdateChunks();
+                ci.SetAllDirty();
+            }
+            serializedObject.Update();
+        }
+
+        if (GUILayout.Button(&quot;Force Resync Chunks&quot;))
+        {
+            AssetDatabase.Refresh();
+            foreach (var t in targets)
+            {
+                var ci = (UI_TiledImage)t;
+                ci.UpdateChunks();
+                ci.SetAllDirty();
+                EditorUtility.SetDirty(ci);
+            }
+            AssetDatabase.SaveAssets();
+        }
+
+        if (GUILayout.Button(&quot;Set Native Size&quot;))
+        {
+            foreach (var t in targets) ((UI_TiledImage)t).SetNativeSize();
+        }
+    }
+}</code></pre> </div><div class="rounded-xl border p-6 sm:p-8" style="background-color:#1c1a17;border-color:rgba(245,240,227,0.06)"> <h2 class="text-sm font-mono uppercase tracking-widest text-gray-500">// Shader</h2> <pre class="mt-3 text-xs sm:text-sm text-gray-300 leading-relaxed overflow-x-auto"><code>Shader &quot;Unlit/UI_TiledImage&quot;
+{
+    Properties
+    {
+        [PerRendererData]_MainTex (&quot;Texture&quot;, 2D) = &quot;white&quot; {}
+
+        _StencilComp (&quot;Stencil Comparison&quot;, Float) = 8
+        _Stencil (&quot;Stencil ID&quot;, Float) = 0
+        _StencilOp (&quot;Stencil Operation&quot;, Float) = 0
+        _StencilWriteMask (&quot;Stencil Write Mask&quot;, Float) = 255
+        _StencilReadMask (&quot;Stencil Read Mask&quot;, Float) = 255
+        _ColorMask (&quot;Color Mask&quot;, Float) = 15
+        [Toggle(UNITY_UI_ALPHACLIP)] _UseUIAlphaClip (&quot;Use Alpha Clip&quot;, Float) = 0
+    }
+    SubShader
+    {
+        Tags{&quot;RenderType&quot; = &quot;Transparent&quot; &quot;Queue&quot; = &quot;Transparent&quot;}
+        Stencil
+        {
+            Ref [_Stencil]
+            Comp [_StencilComp]
+            Pass [_StencilOp]
+            ReadMask [_StencilReadMask]
+            WriteMask [_StencilWriteMask]
+        }
+        ColorMask [_ColorMask]
+        Cull Off ZWrite Off Blend SrcAlpha OneMinusSrcAlpha
+        Pass
+        {
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+
+            #pragma multi_compile DUMMY PIXELSNAP_ON
+            #pragma multi_compile __ UNITY_UI_CLIP_RECT
+            #pragma multi_compile __ UNITY_UI_ALPHACLIP
+
+            #include &quot;UnityUI.cginc&quot;
+            #include &quot;UnityCG.cginc&quot;
+
+            float4 _ClipRect;
+
+            struct appdata
+            {
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
+                float4 color : COLOR;
+            };
+
+            struct v2f
+            {
+                float4 vertex : SV_POSITION;
+                float2 uv : TEXCOORD0;
+                float4 worldPosition : TEXCOORD1;
+                float4 color : COLOR;
+            };
+
+            sampler2D _MainTex;
+            float4 _MainTex_ST;
+            float4 _ChunkRegions[512];   // (offsetX, offsetY, sizeX, sizeY)
+            int _GridColumns, _GridRows, _ChunkCount;
+
+            v2f vert (appdata v)
+            {
+                v2f o;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.uv = v.uv;
+                o.worldPosition = v.vertex;
+                o.color = v.color;
+                return o;
+            }
+
+            fixed4 frag (v2f i) : SV_Target
+            {
+                // Which grid cell does this pixel fall into?
+                int cellX = (int)floor(i.uv.x * _GridColumns);
+                int cellY = (int)floor((1.0 - i.uv.y) * _GridRows);
+
+                cellX = clamp(cellX, 0, _GridColumns - 1);
+                cellY = clamp(cellY, 0, _GridRows - 1);
+
+                int cellOffset = cellY * _GridColumns + cellX;
+                float4 region = _ChunkRegions[cellOffset]; // (offsetX, offsetY, sizeX, sizeY)
+
+                // Remap this cell&#39;s local UV into that chunk&#39;s atlas region
+                float2 localUV = frac(float2(i.uv.x * _GridColumns, i.uv.y * _GridRows));
+                float2 atlasUV = region.xy + localUV * region.zw;
+
+                float4 col = tex2D(_MainTex, atlasUV) * i.color;
+
+                #ifdef UNITY_UI_CLIP_RECT
+                    col.a *= UnityGet2DClipping(i.worldPosition.xy, _ClipRect);
+                #endif
+                #ifdef UNITY_UI_ALPHACLIP
+                    clip (col.a - 0.001);
+                #endif
+                return col;
+            }
+            ENDCG
+        }
+    }
+}</code></pre> </div> </div> </div> </article>  </main> <footer class="relative overflow-hidden border-t border-white/5 py-12 px-6 sm:px-8 bg-[#0e0d0b]" data-astro-cid-sz7xmlte> <!-- Accent gradient hairline along the top edge --> <div class="absolute top-0 left-0 right-0 h-px opacity-60" style="background: linear-gradient(90deg, transparent, #8ab870, transparent)" data-astro-cid-sz7xmlte></div> <!-- Faint grid pattern, echoes the hero section --> <svg aria-hidden="true" class="absolute inset-0 -z-10 size-full opacity-10 [mask-image:radial-gradient(100%_100%_at_bottom_left,white,transparent)]" style="stroke:rgba(245,240,227,0.1)" data-astro-cid-sz7xmlte> <defs data-astro-cid-sz7xmlte> <pattern x="50%" y="-1" id="footer-grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse" data-astro-cid-sz7xmlte> <path d="M.5 40V.5H40" fill="none" data-astro-cid-sz7xmlte></path> </pattern> </defs> <rect fill="url(#footer-grid-pattern)" width="100%" height="100%" stroke-width="0" data-astro-cid-sz7xmlte></rect> </svg> <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6" data-astro-cid-sz7xmlte> <div data-astro-cid-sz7xmlte> <h2 class="font-mono text-lg font-bold tracking-tight" data-astro-cid-sz7xmlte> <span style="color: #8ab870" data-astro-cid-sz7xmlte>&gt;</span> <span class="text-white" data-astro-cid-sz7xmlte>ShaderTrix</span> <span class="inline-block w-2 h-4 ml-1 align-middle animate-pulse" style="background-color: #8ab870" data-astro-cid-sz7xmlte></span> </h2> <p class="text-xs font-mono text-gray-500 mt-1" data-astro-cid-sz7xmlte>
+// Technical Artist | 3D Artist | Graphics Programmer
+</p> <div class="flex items-center gap-2 mt-4 text-gray-400" data-astro-cid-sz7xmlte> <a href="mailto:shivanshuchauhan1998@gmail.com" class="social-icon flex items-center justify-center w-8 h-8 rounded-lg border border-white/5 transition-all duration-300 hover:-translate-y-0.5" aria-label="Email" data-astro-cid-sz7xmlte> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-sz7xmlte> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" data-astro-cid-sz7xmlte></path> </svg> </a> <a href="https://www.linkedin.com/in/shivanshu-chauhan-89095b186" target="_blank" rel="noopener noreferrer" class="social-icon flex items-center justify-center w-8 h-8 rounded-lg border border-white/5 transition-all duration-300 hover:-translate-y-0.5" aria-label="LinkedIn" data-astro-cid-sz7xmlte> <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" data-astro-cid-sz7xmlte> <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" data-astro-cid-sz7xmlte></path> </svg> </a> <a href="https://github.com/ShaderTrix" target="_blank" rel="noopener noreferrer" class="social-icon flex items-center justify-center w-8 h-8 rounded-lg border border-white/5 transition-all duration-300 hover:-translate-y-0.5" aria-label="GitHub" data-astro-cid-sz7xmlte> <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" data-astro-cid-sz7xmlte> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.0.069-.608.0 1.003.702 1.531 1.532 1.531.892 0 1.634-.559 2.03-1.02.086-.615.333-1.02.606-1.255-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.024A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.293 2.747-1.024 2.747-1.024.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" data-astro-cid-sz7xmlte></path> </svg> </a> <a href="https://www.artstation.com/shivanshuchauhan/albums/6216110" target="_blank" rel="noopener noreferrer" class="social-icon flex items-center justify-center w-8 h-8 rounded-lg border border-white/5 transition-all duration-300 hover:-translate-y-0.5" aria-label="ArtStation" data-astro-cid-sz7xmlte> <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" data-astro-cid-sz7xmlte> <path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.333h13.457l-2.792-4.838H0zm24 .19a2.41 2.41 0 0 0-.336-1.218L15.366 1.81a2.424 2.424 0 0 0-2.115-1.244H9.595l12.965 22.42 1.06-1.835A2.42 2.42 0 0 0 24 17.913zM12.453 7.555l4.515 7.823H7.937z" data-astro-cid-sz7xmlte></path> </svg> </a> <a href="https://www.youtube.com/@shivanshuchauhan3032" target="_blank" rel="noopener noreferrer" class="social-icon flex items-center justify-center w-8 h-8 rounded-lg border border-white/5 transition-all duration-300 hover:-translate-y-0.5" aria-label="YouTube" data-astro-cid-sz7xmlte> <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" data-astro-cid-sz7xmlte> <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" data-astro-cid-sz7xmlte></path> </svg> </a> </div> </div> <div class="flex flex-col items-start md:items-end gap-3 font-mono text-xs" data-astro-cid-sz7xmlte> <nav class="flex flex-wrap items-center gap-x-4 gap-y-2 text-gray-400" data-astro-cid-sz7xmlte> <a href="/tech-art" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Techart</a> <a href="/art" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Art</a> <a href="/pro-games" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Games</a> <a href="/" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>About Me</a> <a href="/contact" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Contact</a> </nav> <div class="flex items-center gap-4 mt-1" data-astro-cid-sz7xmlte> <p class="text-gray-600" data-astro-cid-sz7xmlte>
+&copy; 2026 ShaderTrix. Built clean.
+</p> <a href="#" id="back-to-top" class="inline-flex items-center gap-1.5 transition-colors hover:text-white" style="color: #8ab870" aria-label="Back to top" data-astro-cid-sz7xmlte>
+Back to top
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-sz7xmlte> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7 7 7M12 3v18" data-astro-cid-sz7xmlte></path> </svg> </a> </div> </div> </div> </footer>  <script type="module">document.getElementById("back-to-top")?.addEventListener("click",e=>{e.preventDefault(),window.scrollTo({top:0,behavior:"smooth"})});</script> </body></html>
