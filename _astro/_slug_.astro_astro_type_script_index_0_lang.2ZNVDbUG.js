@@ -1,1 +1,0 @@
-import{i as n}from"./youtube-preview.Fh2_68Bn.js";n();const o=document.getElementById("preview-banner"),i=document.getElementById("preview-toggle"),e=document.getElementById("preview-toggle-label");i?.addEventListener("click",()=>{const t=o?.classList.toggle("preview-expanded");e&&(e.textContent=t?"Collapse preview":"Expand preview")});
